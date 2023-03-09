@@ -1,6 +1,6 @@
 package route;
 
-public class GoRestRoute {
+public class UserServiceRoute {
 
     //todo : retrieve from env variable
     private static String baseUrl = "https://gorest.co.in/public";

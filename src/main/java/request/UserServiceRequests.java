@@ -5,11 +5,11 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.User;
 import org.testng.Assert;
-import route.GoRestRoute;
+import route.UserServiceRoute;
 
 import static io.restassured.RestAssured.given;
 
-public class GoRestRequest {
+public class UserServiceRequests {
 
     //-DAUTH_TOKEN=a70ff12470d169e868e27a3babe63746a162c14efac8b7d6ef0b2c073c57f6ec
     private static final String AUTH_TOKEN = System.getProperty("AUTH_TOKEN");
@@ -18,7 +18,7 @@ public class GoRestRequest {
         Response postResponse = getAuthorization(AUTH_TOKEN)
                 .contentType(ContentType.JSON)
                 .body(user)
-                .post(GoRestRoute.postUser());
+                .post(UserServiceRoute.postUser());
         Assert.assertEquals(postResponse.getStatusCode(), 201);
         return postResponse.as(User.class);
     }
@@ -27,7 +27,7 @@ public class GoRestRequest {
         Response getResponse = getAuthorization(AUTH_TOKEN)
                 .contentType(ContentType.JSON)
                 .when()
-                .get(GoRestRoute.getUser(userId));
+                .get(UserServiceRoute.getUser(userId));
         Assert.assertEquals(getResponse.getStatusCode(), 200);
         return getResponse.as(User.class);
     }
