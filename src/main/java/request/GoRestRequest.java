@@ -10,8 +10,8 @@ import static io.restassured.RestAssured.given;
 
 public class GoRestRequest {
 
-    //TODO: get the token form env variable
-    private static final String AUTH_TOKEN = "a70ff12470d169e868e27a3babe63746a162c14efac8b7d6ef0b2c073c57f6ec";
+    //-DAUTH_TOKEN=a70ff12470d169e868e27a3babe63746a162c14efac8b7d6ef0b2c073c57f6ec
+    private static final String AUTH_TOKEN = System.getProperty("AUTH_TOKEN");
 
     public static ValidatableResponse postUsers(User user) {
         return getAuthorization(AUTH_TOKEN)
