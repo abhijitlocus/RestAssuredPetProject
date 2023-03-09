@@ -8,6 +8,7 @@ import static utils.RandomUtil.getRandomElement;
 
 public class User {
 
+    String id;
     String name;
     String email;
     GenderEnum gender;
@@ -19,6 +20,10 @@ public class User {
                 , RandomStringUtils.randomAlphabetic(5), RandomStringUtils.randomAlphabetic(3));
         this.gender = getRandomElement(Arrays.asList(GenderEnum.male, GenderEnum.female));
         this.status = getRandomElement(Arrays.asList(StatusEnum.active, StatusEnum.inactive));
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
